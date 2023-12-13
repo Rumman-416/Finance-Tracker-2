@@ -58,13 +58,13 @@ const ShowData = () => {
           <h6>Select frequency</h6>
           <Select
             value={frequency}
-            className=" w-36"
+            className=" w-36 border-2 border-green-400 rounded-lg bg-transparent"
             onChange={(values) => setFrequency(values)}
           >
-            <Select.Option value="7">Last 1 Week</Select.Option>
-            <Select.Option value="30">Last 1 Month</Select.Option>
-            <Select.Option value="365">Last 1 year</Select.Option>
-            <Select.Option value="custom">Custom</Select.Option>
+            <Select.Option className="custom-option" value="7">Last 1 Week</Select.Option>
+            <Select.Option className="custom-option" value="30">Last 1 Month</Select.Option>
+            <Select.Option className="custom-option" value="365">Last 1 year</Select.Option>
+            <Select.Option className="custom-option" value="custom">Custom</Select.Option>
           </Select>
           {frequency === "custom" && (
             <RangePicker
@@ -77,7 +77,7 @@ const ShowData = () => {
           <h6>Select type</h6>
           <Select
             value={type}
-            className=" w-36"
+            className=" w-36 border-2 border-green-400 rounded-lg "
             onChange={(values) => setType(values)}
           >
             <Select.Option value="all">All</Select.Option>

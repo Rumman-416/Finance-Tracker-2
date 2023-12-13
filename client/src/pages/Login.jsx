@@ -52,7 +52,7 @@ const Login = () => {
               <input
                 type="email"
                 name="email"
-                className="border-2 ml-10 rounded"
+                className="border-2 ml-10 rounded text-black"
                 onChange={(e) => setEmail(e.target.value)}
               />
             </span>
@@ -61,7 +61,7 @@ const Login = () => {
               <input
                 type="password"
                 name="password"
-                className="rounded"
+                className="rounded text-black"
                 onChange={(e) => setPassword(e.target.value)}
               />
             </span>
