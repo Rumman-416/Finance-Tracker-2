@@ -13,6 +13,7 @@ import {
 const LinearRegression = ({ data, selectedCategory }) => {
   const [prediction, setPrediction] = useState(null);
   const [aggregatedExpenseData, setAggregatedExpenseData] = useState([]);
+  const XDate = "Date";
 
   useEffect(() => {
     const runLinearRegression = async () => {
@@ -73,11 +74,13 @@ const LinearRegression = ({ data, selectedCategory }) => {
     setAggregatedExpenseData(expenseData);
   }, [data, selectedCategory]);
 
+  const roundedPrediction = prediction !== null ? Math.round(prediction) : null;
+
   const regressionLineData =
-    prediction !== null && aggregatedExpenseData.length > 0
+    roundedPrediction !== null && aggregatedExpenseData.length > 0
       ? [
           {
-            regressionLine: prediction,
+            regressionLine: roundedPrediction,
           },
         ]
       : [];
@@ -93,10 +96,11 @@ const LinearRegression = ({ data, selectedCategory }) => {
           data={aggregatedExpenseData.concat(regressionLineData)}
           margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
         >
-          <XAxis dataKey="date" />
-          <YAxis>
-            <Label value="Total Expense" angle={-90} position="insideLeft" />
-          </YAxis>
+          <XAxis dataKey="date" tickFormatter={() => XDate} />
+
+          <YAxis
+            label={{ value: "Date", angle: -90, position: "insideBottomLeft" }}
+          />
           <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
           <Tooltip
             formatter={(value, name, props) => [value, "Total Expense"]}
