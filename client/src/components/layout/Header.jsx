@@ -19,15 +19,23 @@ const Header = () => {
   };
   return (
     <div>
-      <nav className=" bg-blue-300 flex gap-5 h-20">
+      <nav className="  flex gap-5 h-20">
         <SideNav />
-        <ul>
-          <Link to="/">home</Link>
-        </ul>
-        <h1>{loginUser && loginUser.name}</h1>
-        <button className=" bg-gray-500" onClick={logoutHandler}>
-          Logout
-        </button>
+        <div className="flex justify-end w-full items-center">
+          <h1 className=" text-xl">
+            Hello ,
+            <span className=" text-green-400">
+              {" "}
+              {loginUser && loginUser.name}
+            </span>
+          </h1>
+          <button
+            className=" bg-green-400 w-20 h-10 rounded-md hover:bg-opacity-30 mx-5"
+            onClick={logoutHandler}
+          >
+            Logout
+          </button>
+        </div>
       </nav>
     </div>
   );

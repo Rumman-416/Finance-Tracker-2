@@ -23,7 +23,7 @@ const Login = () => {
         "user",
         JSON.stringify({ ...data.user, password: "" })
       );
-      navigate("/");
+      navigate("/add-data");
     } catch (error) {
       setLoading(false);
       window.alert(`Failed to login`);
