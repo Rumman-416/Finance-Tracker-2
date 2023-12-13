@@ -17,21 +17,21 @@ const Funds = () => {
     {
       name: "High return plan",
       type: "mid",
-      payment: 1000,
-      interest: "8%",
-      period: 24,
+      payment: 3000,
+      interest: "9%",
+      period: 36,
     },
     {
       name: "Insurance",
       type: "high",
-      payment: 1000,
-      interest: "8%",
-      period: 24,
+      payment: 5000,
+      interest: "4%",
+      period: 12,
     },
     {
       name: "Medical",
       type: "mid",
-      payment: 1000,
+      payment: 8000,
       interest: "8%",
       period: 24,
     },
@@ -105,7 +105,10 @@ const Funds = () => {
 
       {totalIncomeTransactions < 10000
         ? funds.map((fund, index) => (
-            <div key={index} className=" bg-green-400 m-5">
+            <div
+              key={index}
+              className=" m-5 border-2 border-green-400 rounded-lg"
+            >
               {fund.name} - Payment: ${fund.payment} - Period: {fund.period}{" "}
               months
             </div>
