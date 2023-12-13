@@ -11,5 +11,8 @@
     "build": "cd server && npm install && cd ../client && npm install && npm run build"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
 }
