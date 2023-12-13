@@ -2,7 +2,7 @@
   "name": "finance-tracker",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server/server.js",
   "scripts": {
     "client": "cd client && npm start",
     "server": "cd server && npm start",
@@ -11,8 +11,5 @@
     "build": "cd server && npm install && cd ../client && npm install && npm run build"
   },
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "concurrently": "^8.2.2"
-  }
+  "license": "ISC"
 }
