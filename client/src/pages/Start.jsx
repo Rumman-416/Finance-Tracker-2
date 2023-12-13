@@ -5,7 +5,7 @@ const Start = () => {
   return (
     <div>
       <Link
-        className="block py-2 text-[#23253a] hover:text-[#fff]"
+        className=""
         to={{
           pathname: "/login",
         }}

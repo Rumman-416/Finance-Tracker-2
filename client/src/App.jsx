@@ -1,13 +1,13 @@
 import React, { Suspense } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import Register from "./pages/Register";
-import Login from "./pages/Login";
 
 const ShowData = React.lazy(() => import("./pages/ShowData"));
 const AddTransaction = React.lazy(() => import("./pages/AddTransaction"));
 const Prediction = React.lazy(() => import("./pages/Prediction"));
 const Funds = React.lazy(() => import("./pages/Funds"));
 const Start = React.lazy(() => import("./pages/Start"));
+const Login = React.lazy(() => import("./pages/Login"));
+const Register = React.lazy(() => import("./pages/Register"));
 const App = () => {
   return (
     <>
@@ -52,9 +52,30 @@ const App = () => {
             </ProtedtedRoutes>
           }
         />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/" element={<Start />} />
+        <Route
+          path="/register"
+          element={
+            <Suspense>
+              <Register />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <Suspense>
+              <Login />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/"
+          element={
+            <Suspense>
+              <Start />{" "}
+            </Suspense>
+          }
+        />
       </Routes>
     </>
   );

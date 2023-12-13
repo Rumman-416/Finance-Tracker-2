@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
-
 import Layout from "../components/layout/Layout";
+import Select from "antd/lib/select";
+import DatePicker from "antd/lib/date-picker";
 import axios from "axios";
 import { FaRupeeSign } from "react-icons/fa";
 import { CiCalendarDate } from "react-icons/ci";
 import { BsCashCoin } from "react-icons/bs";
+
+const { RangePicker } = DatePicker;
 
 const ShowData = () => {
   const [allTransaction, setAllTransaction] = useState([]);
@@ -51,39 +54,36 @@ const ShowData = () => {
   return (
     <>
       <Layout>
-        <div className="flex gap-8">
-          <div className="mx-10 my-4">
-            <h6>Select frequency</h6>
-            <select
-              value={frequency}
-              className="w-36 h-7 bg-[#23253a] border border-green-400 rounded-md"
-              onChange={(e) => setFrequency(e.target.value)}
-            >
-              <option value="7">Last 1 Week</option>
-              <option value="30">Last 1 Month</option>
-              <option value="365">Last 1 year</option>
-              <option value="custom">Custom</option>
-            </select>
-            {frequency === "custom" && (
-              <input
-                type="date"
-                value={selectedDate}
-                onChange={(e) => setSelectedDate(e.target.value)}
-              />
-            )}
-          </div>
-          <div className="mx-10 my-4">
-            <h6>Select type</h6>
-            <select
-              value={type}
-              onChange={(e) => setType(e.target.value)}
-              className="w-36 h-7 bg-[#23253a] border border-green-400 rounded-md"
-            >
-              <option value="all">All</option>
-              <option value="income">Income</option>
-              <option value="expense">Expense</option>
-            </select>
-          </div>
+        <div>
+          <h6>Select frequency</h6>
+          <Select
+            value={frequency}
+            className=" w-36"
+            onChange={(values) => setFrequency(values)}
+          >
+            <Select.Option value="7">Last 1 Week</Select.Option>
+            <Select.Option value="30">Last 1 Month</Select.Option>
+            <Select.Option value="365">Last 1 year</Select.Option>
+            <Select.Option value="custom">Custom</Select.Option>
+          </Select>
+          {frequency === "custom" && (
+            <RangePicker
+              value={selectedDate}
+              onChange={(values) => setSelectedDate(values)}
+            />
+          )}
+        </div>
+        <div>
+          <h6>Select type</h6>
+          <Select
+            value={type}
+            className=" w-36"
+            onChange={(values) => setType(values)}
+          >
+            <Select.Option value="all">All</Select.Option>
+            <Select.Option value="income">Income</Select.Option>
+            <Select.Option value="expense">Expense</Select.Option>
+          </Select>
         </div>
         <div className="flex justify-center ">
           <div className="grid grid-cols-1">
