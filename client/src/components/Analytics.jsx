@@ -77,7 +77,7 @@ const Analytics = ({ allTransaction }) => {
 
   return (
     <div className="flex flex-col items-center">
-      <div>
+      <div className=" bg-green-400 bg-opacity-20 m-5 p-5 rounded-xl border-2 border-green-400">
         <div>Total Transactions: {totalTransactions}</div>
         <div>Income: {totalIncomeTransactions.length}</div>
         <div>Expense: {totalExpenseTransactions.length}</div>
@@ -120,7 +120,7 @@ const Analytics = ({ allTransaction }) => {
           )}
         </div>
       </div>
-      <div>
+      <div className=" bg-green-400 bg-opacity-20 m-5 p-5 rounded-xl border-2 border-green-400">
         <div>Total Turnover: {totalTurnover}</div>
         <div>Income: {totalIncomeTurnover}</div>
         <div>Expense: {totalExpenseTurnover}</div>
