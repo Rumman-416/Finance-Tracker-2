@@ -7,7 +7,6 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
-  Label,
 } from "recharts";
 
 const LinearRegression = ({ data, selectedCategory }) => {
@@ -85,6 +84,42 @@ const LinearRegression = ({ data, selectedCategory }) => {
         ]
       : [];
 
+  const CustomTooltip = ({ active, payload, label }) => {
+    const getFormattedDate = (dateString) => {
+      const date = new Date(dateString);
+      if (!isNaN(date.getTime())) {
+        return date.toLocaleDateString("default", {
+          month: "long",
+          year: "numeric",
+        });
+      } else {
+        return "";
+      }
+    };
+
+    if (active && payload && payload.length) {
+      const date = getFormattedDate(label);
+      const lineColor = payload[0].stroke || "#000"; // Default to black if stroke color is not available
+
+      return (
+        <div
+          className="custom-tooltip"
+          style={{ background: "#000", color: lineColor }}
+        >
+          <p className="label">
+            {`Date: ${
+              date ||
+              new Date().toLocaleDateString("default", { month: "long" })
+            }`}
+          </p>
+          <p className="intro">{`Total Expense: ${payload[0].value}`}</p>
+        </div>
+      );
+    }
+
+    return null;
+  };
+
   return (
     <div className="chart-container">
       <h3>{`Expense Linear Regression Prediction for ${selectedCategory}`}</h3>
@@ -96,28 +131,25 @@ const LinearRegression = ({ data, selectedCategory }) => {
           data={aggregatedExpenseData.concat(regressionLineData)}
           margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
         >
-          <XAxis dataKey="date" tickFormatter={() => XDate} />
-
+          <XAxis
+            dataKey="date"
+            tickFormatter={() => XDate}
+            tick={{ fill: "#fff" }}
+          />
           <YAxis
             label={{ value: "Date", angle: -90, position: "insideBottomLeft" }}
+            tick={{ fill: "#fff" }}
           />
-          <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
-          <Tooltip
-            formatter={(value, name, props) => [value, "Total Expense"]}
-            labelFormatter={(label) =>
-              new Date(label).toLocaleDateString("default", {
-                month: "long",
-                year: "numeric",
-              })
-            }
-          />
+          <CartesianGrid stroke="#4ADE80" strokeDasharray="5 5" />
+          <Tooltip content={<CustomTooltip />} />
           <Legend />
-          <Line type="monotone" dataKey="totalExpense" stroke="#FF7E5F" />
+          <Line type="monotone" dataKey="totalExpense" stroke="#FF0000" />
           <Line
             type="monotone"
             dataKey="regressionLine"
-            stroke="#0000FF"
-            strokeDasharray="5 5"
+            stroke="#ADD8E6"
+            strokeWidth={8}
+            strokeDasharray="3 3"
           />
         </LineChart>
       ) : (

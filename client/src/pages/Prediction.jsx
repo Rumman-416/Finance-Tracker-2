@@ -43,6 +43,7 @@ const Prediction = () => {
             <select
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
+              className="w-36 h-7 bg-[#23253a] border border-green-400 rounded-md"
             >
               {uniqueCategories.map((category) => (
                 <option key={category} value={category}>
