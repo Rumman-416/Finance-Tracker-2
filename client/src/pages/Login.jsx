@@ -38,30 +38,28 @@ const Login = () => {
   return (
     <>
       <div className=" flex flex-col justify-center items-center h-[100vh]">
-        <div className="login-box bg-green-400 bg-opacity-20 border-2 rounded-lg">
+        <div className=" bg-green-400 bg-opacity-20 border-2 border-green-400  rounded-lg w-11/12 min-h-[20rem]">
           {loading && <Spinner />}
-          <h1 className="text-center mb-5 mt-5 text-3xl text-green-400">
-            Login
-          </h1>
+          <h1 className="text-center  text-3xl text-green-400 m-10">Login</h1>
           <form
             action=""
             className="flex flex-col gap-3 justify-center items-center"
           >
-            <span className="mb-3">
-              <label className="text-xl">Email : </label>
+            <div className="flex justify-around items-center w-full">
+              <label className="text-sm">Email : </label>
               <input
                 type="email"
                 name="email"
-                className="border-2 ml-10 rounded"
+                className=" rounded w-56 bg-[#23253a] border border-green-400"
                 onChange={(e) => setEmail(e.target.value)}
               />
-            </span>
-            <span className="flex gap-3 m-3">
-              <label className="text-xl">Password :</label>
+            </div>
+            <span className="flex justify-around items-center w-full">
+              <label className="text-sm">Password :</label>
               <input
                 type="password"
                 name="password"
-                className="rounded"
+                className="rounded w-56 bg-[#23253a] border border-green-400"
                 onChange={(e) => setPassword(e.target.value)}
               />
             </span>
@@ -71,7 +69,7 @@ const Login = () => {
             <input
               type="submit"
               value="Login"
-              className="border-2 bg-slate-500 mb-5 w-20 justify-center"
+              className=" bg-green-400 w-20 h-10 rounded-md hover:bg-opacity-30"
               onClick={submitHandler}
             />
           </form>

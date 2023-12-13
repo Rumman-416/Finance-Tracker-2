@@ -37,47 +37,52 @@ const Register = () => {
 
   return (
     <>
-      <div className=" flex flex-col justify-center items-center">
-        {loading && <Spinner />}
-        <h1>Signup</h1>
-        <form action="" className="flex flex-col gap-3">
-          <span>
-            <label>Name:</label>
+      <div className=" flex flex-col justify-center items-center h-[100vh]">
+        <div className="   border-2 border-green-400  rounded-lg w-11/12 min-h-[20rem]">
+          {loading && <Spinner />}
+          <h1 className="text-center  text-3xl text-green-400 m-10">Signup</h1>
+          <form
+            action=""
+            className="flex flex-col gap-3 justify-center items-center"
+          >
+            <span className="flex justify-around items-center w-full">
+              <label>Name:</label>
+              <input
+                type="text"
+                name="name"
+                className=" rounded w-56 bg-[#23253a] border border-green-400"
+                onChange={(e) => setName(e.target.value)}
+              />
+            </span>
+            <span className="flex justify-around items-center w-full">
+              <label>Email:</label>
+              <input
+                type="email"
+                name="email"
+                className=" rounded w-56 bg-[#23253a] border border-green-400"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </span>
+            <span className="flex justify-around items-center w-full">
+              <label>Password:</label>
+              <input
+                type="password"
+                name="password"
+                className=" rounded w-56 bg-[#23253a] border border-green-400"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </span>
+            <Link to="/login" className=" text-blue-400">
+              Already have an account ? Click here to login
+            </Link>
             <input
-              type="text"
-              name="name"
-              className="border-2"
-              onChange={(e) => setName(e.target.value)}
+              type="submit"
+              value="Register"
+              className=" bg-green-400 w-20 h-10 rounded-md hover:bg-opacity-30"
+              onClick={submitHandler}
             />
-          </span>
-          <span>
-            <label>Email:</label>
-            <input
-              type="email"
-              name="email"
-              className="border-2"
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </span>
-          <span>
-            <label>Password:</label>
-            <input
-              type="password"
-              name="password"
-              className="border-2"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </span>
-          <Link to="/login" className=" text-blue-400">
-            Already have an account ? Click here to login
-          </Link>
-          <input
-            type="submit"
-            value="Register"
-            className="border-2 bg-slate-500 "
-            onClick={submitHandler}
-          />
-        </form>
+          </form>
+        </div>
       </div>
     </>
   );
