@@ -62,8 +62,13 @@ const AddTransaction = () => {
       <Suspense fallback={<p> Loading</p>}>
         <Analytics allTransaction={allTransaction} />
       </Suspense>
-      <div>
-        <button onClick={() => setShowModal(true)}>Add New</button>
+      <div className="flex justify-center items-center ">
+        <button
+          onClick={() => setShowModal(true)}
+          className=" bg-green-400 w-20 h-10 rounded-md hover:bg-opacity-30"
+        >
+          Add New
+        </button>
       </div>
       <Modal
         title="Add Transaction"

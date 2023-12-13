@@ -39,7 +39,7 @@ const SideNav = () => {
           <Link
             className="block py-2 text-[#23253a] hover:text-[#fff]"
             to={{
-              pathname: "/",
+              pathname: "/add-data",
             }}
           >
             Home

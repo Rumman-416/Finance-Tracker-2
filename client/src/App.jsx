@@ -7,12 +7,13 @@ const ShowData = React.lazy(() => import("./pages/ShowData"));
 const AddTransaction = React.lazy(() => import("./pages/AddTransaction"));
 const Prediction = React.lazy(() => import("./pages/Prediction"));
 const Funds = React.lazy(() => import("./pages/Funds"));
+const Start = React.lazy(() => import("./pages/Start"));
 const App = () => {
   return (
     <>
       <Routes>
         <Route
-          path="/"
+          path="/add-data"
           element={
             <ProtedtedRoutes>
               <Suspense>
@@ -53,6 +54,7 @@ const App = () => {
         />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Start />} />
       </Routes>
     </>
   );
