@@ -29,11 +29,18 @@ const Funds = () => {
       period: 12,
     },
     {
-      name: "Medical",
+      name: "Oldage retuns",
       type: "mid",
       payment: 8000,
       interest: "8%",
       period: 24,
+    },
+    {
+      name: "Mixamo return plans",
+      type: "high",
+      payment: 7500,
+      interest: "5%",
+      period: 18,
     },
   ];
 
@@ -114,9 +121,26 @@ const Funds = () => {
             </div>
           ))
         : userFunds.map((fund, index) => (
-            <div key={index} className=" bg-green-400 m-5">
-              {fund.name} - Type: {fund.type} - Total Interest: $
-              {fund.totalInterest} - Time: {fund.time}
+            <div
+              key={index}
+              className=" p-2  m-7 border-2 border-[#ff4b56] rounded-lg flex flex-col gap-2"
+            >
+              <div className="flex gap-2">
+                <h1 className=" text-green-400">Investment :</h1>
+                <h1>{fund.name}</h1>
+              </div>
+              <div className="flex gap-2">
+                <h1 className=" text-green-400">Period of Investment :</h1>
+                <h1>{fund.period} months</h1>
+              </div>
+              <div className="flex gap-2">
+                <h1 className=" text-green-400">Amount to be invested :</h1>
+                <h1>{fund.payment} </h1>
+              </div>
+              <div className="flex gap-2">
+                <h1 className=" text-green-400">Total Interest :</h1>
+                <h1>{fund.totalInterest}</h1>
+              </div>
             </div>
           ))}
     </Layout>

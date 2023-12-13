@@ -44,4 +44,34 @@ const addTransaction = async (req, res) => {
   }
 };
 
-module.exports = { getTransaction, getAllTransaction, addTransaction };
+const updateTransaction = async (req, res) => {
+  try {
+    const updatedTransaction = await transactionModel.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    );
+    res.status(200).json(updatedTransaction);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(error);
+  }
+};
+
+const deleteTransaction = async (req, res) => {
+  try {
+    await transactionModel.findByIdAndDelete(req.params.id);
+    res.status(200).send("Transaction deleted successfully");
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(error);
+  }
+};
+
+module.exports = {
+  getTransaction,
+  getAllTransaction,
+  addTransaction,
+  updateTransaction,
+  deleteTransaction,
+};

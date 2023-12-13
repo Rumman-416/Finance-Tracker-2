@@ -6,6 +6,8 @@ import axios from "axios";
 import { FaRupeeSign } from "react-icons/fa";
 import { CiCalendarDate } from "react-icons/ci";
 import { BsCashCoin } from "react-icons/bs";
+import { MdModeEditOutline } from "react-icons/md";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
 const { RangePicker } = DatePicker;
 
@@ -14,11 +16,6 @@ const ShowData = () => {
   const [frequency, setFrequency] = useState("7");
   const [selectedDate, setSelectedDate] = useState([]);
   const [type, setType] = useState("all");
-
-  const categoryIcons = {
-    food: "ss",
-    entertainment: "ss",
-  };
 
   const getAllTransactions = async () => {
     try {
@@ -29,6 +26,38 @@ const ShowData = () => {
       );
       setAllTransaction(res.data);
       console.log(res.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const handleUpdate = async (transactionId) => {
+    try {
+      // Implement your logic to fetch the specific transaction data for editing
+      // For example:
+      const response = await axios.get(
+        `http://localhost:8080/transactions/get-transaction/${transactionId}`
+      );
+      const transactionData = response.data;
+
+      // Now you can use the transactionData to pre-fill your update form or modal
+      // ...
+
+      // After updating the transaction, refresh the transaction list
+      getAllTransactions();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleDelete = async (transactionId) => {
+    try {
+      // Implement your logic to delete the transaction with the given ID
+      await axios.delete(
+        `http://localhost:8080/transactions/delete-transaction/${transactionId}`
+      );
+
+      // After deletion, fetch the updated list of transactions
+      getAllTransactions();
     } catch (error) {
       console.error(error);
     }
@@ -47,43 +76,49 @@ const ShowData = () => {
     return formattedDate;
   };
 
-  const getCategoryIcon = (category) => {
-    return categoryIcons[category];
-  };
-
   return (
     <>
       <Layout>
-        <div>
-          <h6>Select frequency</h6>
-          <Select
-            value={frequency}
-            className=" w-36 border-2 border-green-400 rounded-lg bg-transparent"
-            onChange={(values) => setFrequency(values)}
-          >
-            <Select.Option className="custom-option" value="7">Last 1 Week</Select.Option>
-            <Select.Option className="custom-option" value="30">Last 1 Month</Select.Option>
-            <Select.Option className="custom-option" value="365">Last 1 year</Select.Option>
-            <Select.Option className="custom-option" value="custom">Custom</Select.Option>
-          </Select>
-          {frequency === "custom" && (
-            <RangePicker
-              value={selectedDate}
-              onChange={(values) => setSelectedDate(values)}
-            />
-          )}
-        </div>
-        <div>
-          <h6>Select type</h6>
-          <Select
-            value={type}
-            className=" w-36 border-2 border-green-400 rounded-lg "
-            onChange={(values) => setType(values)}
-          >
-            <Select.Option value="all">All</Select.Option>
-            <Select.Option value="income">Income</Select.Option>
-            <Select.Option value="expense">Expense</Select.Option>
-          </Select>
+        <div className="flex gap-5 m-5">
+          <div>
+            <h6>Select frequency</h6>
+            <Select
+              value={frequency}
+              className=" w-36 border-2 border-green-400 rounded-lg bg-transparent"
+              onChange={(values) => setFrequency(values)}
+            >
+              <Select.Option className="custom-option" value="7">
+                Last 1 Week
+              </Select.Option>
+              <Select.Option className="custom-option" value="30">
+                Last 1 Month
+              </Select.Option>
+              <Select.Option className="custom-option" value="365">
+                Last 1 year
+              </Select.Option>
+              <Select.Option className="custom-option" value="custom">
+                Custom
+              </Select.Option>
+            </Select>
+            {frequency === "custom" && (
+              <RangePicker
+                value={selectedDate}
+                onChange={(values) => setSelectedDate(values)}
+              />
+            )}
+          </div>
+          <div>
+            <h6>Select type</h6>
+            <Select
+              value={type}
+              className=" w-36 border-2 border-green-400 rounded-lg "
+              onChange={(values) => setType(values)}
+            >
+              <Select.Option value="all">All</Select.Option>
+              <Select.Option value="income">Income</Select.Option>
+              <Select.Option value="expense">Expense</Select.Option>
+            </Select>
+          </div>
         </div>
         <div className="flex justify-center ">
           <div className="grid grid-cols-1">
@@ -118,6 +153,16 @@ const ShowData = () => {
                   <div className="flex items-center">
                     <CiCalendarDate className="text-[#23253a] text-xl" />
                     <h1>{formatDateString(transaction.date)}</h1>
+                  </div>
+                  <div className="flex gap-5 my-3">
+                    <MdModeEditOutline
+                      className=" text-xl"
+                      onClick={() => handleUpdate(transaction._id)}
+                    />
+                    <RiDeleteBin6Line
+                      className=" text-xl"
+                      onClick={() => handleDelete(transaction._id)}
+                    />
                   </div>
                 </div>
                 <div className="flex flex-col justify-center items-center gap-8">
