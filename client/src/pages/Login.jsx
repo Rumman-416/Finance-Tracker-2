@@ -40,7 +40,9 @@ const Login = () => {
       <div className=" flex flex-col justify-center items-center h-[100vh]">
         <div className="login-box bg-green-400 bg-opacity-20 border-2 rounded-lg">
           {loading && <Spinner />}
-          <h1 className="text-center mb-5 mt-5 text-3xl text-green-400">Login</h1>
+          <h1 className="text-center mb-5 mt-5 text-3xl text-green-400">
+            Login
+          </h1>
           <form
             action=""
             className="flex flex-col gap-3 justify-center items-center"
@@ -64,7 +66,7 @@ const Login = () => {
               />
             </span>
             <Link to="/register" className=" text-blue-800">
-              {/*Don't have an account ? Click here to signup*/}
+              Don't have an account ? Click here to signup
             </Link>
             <input
               type="submit"
