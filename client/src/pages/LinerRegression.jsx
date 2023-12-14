@@ -8,6 +8,7 @@ import {
   Tooltip,
   Legend,
 } from "recharts";
+import LRP from "../assets/images/LRP.png";
 
 const LinearRegression = ({ data, selectedCategory }) => {
   const [prediction, setPrediction] = useState(null);
@@ -121,40 +122,53 @@ const LinearRegression = ({ data, selectedCategory }) => {
   };
 
   return (
-    <div className="chart-container">
-      <h3>{`Expense Linear Regression Prediction for ${selectedCategory}`}</h3>
-      {prediction !== null && aggregatedExpenseData.length > 0 ? (
-        <LineChart
-          className="line-chart"
-          width={450}
-          height={300}
-          data={aggregatedExpenseData.concat(regressionLineData)}
-          margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-        >
-          <XAxis
-            dataKey="date"
-            tickFormatter={() => XDate}
-            tick={{ fill: "#fff" }}
-          />
-          <YAxis
-            label={{ value: "Date", angle: -90, position: "insideBottomLeft" }}
-            tick={{ fill: "#fff" }}
-          />
-          <CartesianGrid stroke="#4ADE80" strokeDasharray="5 5" />
-          <Tooltip content={<CustomTooltip />} />
-          <Legend />
-          <Line type="monotone" dataKey="totalExpense" stroke="#FF0000" />
-          <Line
-            type="monotone"
-            dataKey="PredictedPoint"
-            stroke="#ADD8E6"
-            strokeWidth={8}
-            strokeDasharray="3 3"
-          />
-        </LineChart>
-      ) : (
-        <p>{`No expense data available for the selected category ${selectedCategory}.`}</p>
-      )}
+    <div className="flex ">
+      <div>
+        <img
+          src={LRP}
+          alt=""
+          className=" h-0 w-0 lg:h-[20rem] lg:w-auto lg:flex-row-reverse"
+        />
+      </div>
+      <div className="chart-container">
+        <h3>{`Expense Linear Regression Prediction for ${selectedCategory}`}</h3>
+        {prediction !== null && aggregatedExpenseData.length > 0 ? (
+          <LineChart
+            className="line-chart"
+            width={450}
+            height={350}
+            data={aggregatedExpenseData.concat(regressionLineData)}
+            margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+          >
+            <XAxis
+              dataKey="date"
+              tickFormatter={() => XDate}
+              tick={{ fill: "#fff" }}
+            />
+            <YAxis
+              label={{
+                value: "Date",
+                angle: -90,
+                position: "insideBottomLeft",
+              }}
+              tick={{ fill: "#fff" }}
+            />
+            <CartesianGrid stroke="#4ADE80" strokeDasharray="5 5" />
+            <Tooltip content={<CustomTooltip />} />
+            <Legend />
+            <Line type="monotone" dataKey="totalExpense" stroke="#FF0000" />
+            <Line
+              type="monotone"
+              dataKey="PredictedPoint"
+              stroke="#ADD8E6"
+              strokeWidth={8}
+              strokeDasharray="3 3"
+            />
+          </LineChart>
+        ) : (
+          <p>{`No expense data available for the selected category ${selectedCategory}.`}</p>
+        )}
+      </div>
     </div>
   );
 };

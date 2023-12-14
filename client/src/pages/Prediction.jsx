@@ -36,7 +36,7 @@ const Prediction = () => {
   return (
     <Layout>
       <div className="mt-10 w-full flex flex-col justify-center items-center gap-5">
-        <h2 className=" text-green-400">Next Expense prediction</h2>
+        <h2 className=" text-green-400"> Expense prediction</h2>
         {uniqueCategories.length > 0 && (
           <>
             <div>

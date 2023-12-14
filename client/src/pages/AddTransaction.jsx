@@ -8,6 +8,7 @@ import Input from "antd/lib/input";
 import Select from "antd/lib/select";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ATP from "../assets/images/ATP.png";
 
 const Analytics = React.lazy(() => import("../components/Analytics"));
 
@@ -66,121 +67,127 @@ const AddTransaction = () => {
 
   return (
     <Layout>
-      {loading && <Spinner />}
-      <Suspense fallback={<p> Loading</p>}>
-        <Analytics allTransaction={allTransaction} />
-      </Suspense>
       <div>
-        <div className="flex justify-center items-center ">
-          <button
-            onClick={() => setShowModal(true)}
-            className=" bg-green-400 w-56 h-10 rounded-md hover:bg-opacity-30 m-5"
-          >
-            Add New Transaction
-          </button>
+        <div className="lg:flex w-full lg:justify-center">
+          <img src={ATP} alt="" className="h-0 w-0 lg:h-[35rem] lg:w-auto" />
+
+          {loading && <Spinner />}
+          <Suspense fallback={<p> Loading</p>}>
+            <Analytics allTransaction={allTransaction} />
+          </Suspense>
         </div>
-        <Modal
-          title="Add Transaction"
-          open={showModal}
-          onCancel={() => setShowModal(false)}
-          footer={false}
-        >
-          <Form layout="vertical" onFinish={handleSubmit}>
-            <Form.Item
-              label="Name"
-              name="name"
-              rules={[
-                {
-                  required: true,
-                  message: "Please enter a name",
-                },
-              ]}
+        <div>
+          <div className="flex justify-center items-center ">
+            <button
+              onClick={() => setShowModal(true)}
+              className=" bg-green-400 w-56 h-10 rounded-md hover:bg-opacity-30 m-5"
             >
-              <Input type="text" />
-            </Form.Item>
-            <Form.Item
-              label="Amount"
-              name="amount"
-              rules={[
-                {
-                  required: true,
-                  message: "Please enter a positive amount",
-                },
-                {
-                  pattern: /^[1-9]\d*(\.\d+)?$/, // Regex to validate positive numbers (including decimals)
-                  message: "Amount must be a positive number",
-                },
-              ]}
-            >
-              <Input type="number" />
-            </Form.Item>
-            <Form.Item
-              label="Type"
-              name="type"
-              rules={[
-                {
-                  required: true,
-                  message: "Please select a type",
-                },
-              ]}
-            >
-              <Select>
-                <Select.Option value="income">Income</Select.Option>
-                <Select.Option value="expense">Expense</Select.Option>
-              </Select>
-            </Form.Item>
-            <Form.Item
-              label="Category"
-              name="category"
-              rules={[
-                {
-                  required: true,
-                  message: "Please select a category",
-                },
-              ]}
-            >
-              <Select>
-                <Select.Option value="salary">Salary</Select.Option>
-                <Select.Option value="entertainment">
-                  Entertainment
-                </Select.Option>
-                <Select.Option value="food">Food</Select.Option>
-                <Select.Option value="tax">Tax</Select.Option>
-                <Select.Option value="bill">Bills</Select.Option>
-                <Select.Option value="others">Others</Select.Option>
-              </Select>
-            </Form.Item>
-            <Form.Item
-              label="Date"
-              name="date"
-              rules={[
-                {
-                  required: true,
-                  message: "Please select a date",
-                },
-              ]}
-            >
-              <Input type="date" />
-            </Form.Item>
-            <Form.Item
-              label="Description"
-              name="description"
-              rules={[
-                {
-                  required: true,
-                  message: "Please enter a description",
-                },
-              ]}
-            >
-              <Input type="text" />
-            </Form.Item>
-            <div className="flex justify-end items-center">
-              <button type="submit" className="border-2 h-8 w-16">
-                Save
-              </button>
-            </div>
-          </Form>
-        </Modal>
+              Add New Transaction
+            </button>
+          </div>
+          <Modal
+            title="Add Transaction"
+            open={showModal}
+            onCancel={() => setShowModal(false)}
+            footer={false}
+          >
+            <Form layout="vertical" onFinish={handleSubmit}>
+              <Form.Item
+                label="Name"
+                name="name"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please enter a name",
+                  },
+                ]}
+              >
+                <Input type="text" />
+              </Form.Item>
+              <Form.Item
+                label="Amount"
+                name="amount"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please enter a positive amount",
+                  },
+                  {
+                    pattern: /^[1-9]\d*(\.\d+)?$/, // Regex to validate positive numbers (including decimals)
+                    message: "Amount must be a positive number",
+                  },
+                ]}
+              >
+                <Input type="number" />
+              </Form.Item>
+              <Form.Item
+                label="Type"
+                name="type"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please select a type",
+                  },
+                ]}
+              >
+                <Select>
+                  <Select.Option value="income">Income</Select.Option>
+                  <Select.Option value="expense">Expense</Select.Option>
+                </Select>
+              </Form.Item>
+              <Form.Item
+                label="Category"
+                name="category"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please select a category",
+                  },
+                ]}
+              >
+                <Select>
+                  <Select.Option value="salary">Salary</Select.Option>
+                  <Select.Option value="entertainment">
+                    Entertainment
+                  </Select.Option>
+                  <Select.Option value="food">Food</Select.Option>
+                  <Select.Option value="tax">Tax</Select.Option>
+                  <Select.Option value="bill">Bills</Select.Option>
+                  <Select.Option value="others">Others</Select.Option>
+                </Select>
+              </Form.Item>
+              <Form.Item
+                label="Date"
+                name="date"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please select a date",
+                  },
+                ]}
+              >
+                <Input type="date" />
+              </Form.Item>
+              <Form.Item
+                label="Description"
+                name="description"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please enter a description",
+                  },
+                ]}
+              >
+                <Input type="text" />
+              </Form.Item>
+              <div className="flex justify-end items-center">
+                <button type="submit" className="border-2 h-8 w-16">
+                  Save
+                </button>
+              </div>
+            </Form>
+          </Modal>
+        </div>
       </div>
       <ToastContainer />
     </Layout>
