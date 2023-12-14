@@ -66,7 +66,7 @@ const SideNav = () => {
               pathname: "/funds",
             }}
           >
-            Funds
+            Investment
           </Link>
         </div>
       </div>
