@@ -4,7 +4,6 @@ import React, { useState, useEffect, Suspense } from "react";
 import Layout from "../components/layout/Layout";
 import Spinner from "../components/Spinner";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import Modal from "antd/lib/modal";
 import Form from "antd/lib/form";
 import Input from "antd/lib/input";
@@ -16,7 +15,6 @@ const AddTransaction = () => {
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(false);
   const [allTransaction, setAllTransaction] = useState([]);
-  const navigate = useNavigate();
 
   const handleSubmit = async (values) => {
     try {
@@ -30,6 +28,7 @@ const AddTransaction = () => {
         }
       );
       setLoading(false);
+      setShowModal(false);
       console.log(response.data);
       getAllTransactions();
     } catch (error) {
@@ -78,19 +77,59 @@ const AddTransaction = () => {
           footer={false}
         >
           <Form layout="vertical" onFinish={handleSubmit}>
-            <Form.Item label="Name" name="name">
+            <Form.Item
+              label="Name"
+              name="name"
+              rules={[
+                {
+                  required: true,
+                  message: "Please enter a name",
+                },
+              ]}
+            >
               <Input type="text" />
             </Form.Item>
-            <Form.Item label="Amount" name="amount">
+            <Form.Item
+              label="Amount"
+              name="amount"
+              rules={[
+                {
+                  required: true,
+                  message: "Please enter a positive amount",
+                },
+                {
+                  pattern: /^[1-9]\d*(\.\d+)?$/, // Regex to validate positive numbers (including decimals)
+                  message: "Amount must be a positive number",
+                },
+              ]}
+            >
               <Input type="number" />
             </Form.Item>
-            <Form.Item label="Type" name="type">
+            <Form.Item
+              label="Type"
+              name="type"
+              rules={[
+                {
+                  required: true,
+                  message: "Please select a type",
+                },
+              ]}
+            >
               <Select>
                 <Select.Option value="income">Income</Select.Option>
                 <Select.Option value="expense">Expense</Select.Option>
               </Select>
             </Form.Item>
-            <Form.Item label="Category" name="category">
+            <Form.Item
+              label="Category"
+              name="category"
+              rules={[
+                {
+                  required: true,
+                  message: "Please select a category",
+                },
+              ]}
+            >
               <Select>
                 <Select.Option value="salary">Salary</Select.Option>
                 <Select.Option value="entertainment">
@@ -102,10 +141,28 @@ const AddTransaction = () => {
                 <Select.Option value="others">Others</Select.Option>
               </Select>
             </Form.Item>
-            <Form.Item label="Date" name="date">
+            <Form.Item
+              label="Date"
+              name="date"
+              rules={[
+                {
+                  required: true,
+                  message: "Please select a date",
+                },
+              ]}
+            >
               <Input type="date" />
             </Form.Item>
-            <Form.Item label="Description" name="description">
+            <Form.Item
+              label="Description"
+              name="description"
+              rules={[
+                {
+                  required: true,
+                  message: "Please enter a description",
+                },
+              ]}
+            >
               <Input type="text" />
             </Form.Item>
             <div className="flex justify-end items-center">

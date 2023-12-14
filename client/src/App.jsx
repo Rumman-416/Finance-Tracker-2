@@ -8,81 +8,81 @@ const Funds = React.lazy(() => import("./pages/Funds"));
 const Start = React.lazy(() => import("./pages/Start"));
 const Login = React.lazy(() => import("./pages/Login"));
 const Register = React.lazy(() => import("./pages/Register"));
+
 const App = () => {
   return (
-    <>
-      <Routes>
-        <Route
-          path="/add-data"
-          element={
-            <ProtedtedRoutes>
-              <Suspense>
-                <AddTransaction />
-              </Suspense>
-            </ProtedtedRoutes>
-          }
-        />
-        <Route
-          path="/show-data"
-          element={
-            <ProtedtedRoutes>
-              <Suspense>
-                <ShowData />
-              </Suspense>
-            </ProtedtedRoutes>
-          }
-        />
-        <Route
-          path="/predict-data"
-          element={
-            <ProtedtedRoutes>
-              <Suspense>
-                <Prediction />
-              </Suspense>
-            </ProtedtedRoutes>
-          }
-        />
-        <Route
-          path="/funds"
-          element={
-            <ProtedtedRoutes>
-              <Suspense>
-                <Funds />
-              </Suspense>
-            </ProtedtedRoutes>
-          }
-        />
-        <Route
-          path="/register"
-          element={
-            <Suspense>
-              <Register />
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <Suspense fallback={<div>Loading...</div>}>
+            <Start />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/add-data"
+        element={
+          <ProtedtedRoutes>
+            <Suspense fallback={<div>Loading...</div>}>
+              <AddTransaction />
             </Suspense>
-          }
-        />
-        <Route
-          path="/login"
-          element={
-            <Suspense>
-              <Login />
+          </ProtedtedRoutes>
+        }
+      />
+      <Route
+        path="/show-data"
+        element={
+          <ProtedtedRoutes>
+            <Suspense fallback={<div>Loading...</div>}>
+              <ShowData />
             </Suspense>
-          }
-        />
-        <Route
-          path="/"
-          element={
-            <Suspense>
-              <Start />{" "}
+          </ProtedtedRoutes>
+        }
+      />
+      <Route
+        path="/predict-data"
+        element={
+          <ProtedtedRoutes>
+            <Suspense fallback={<div>Loading...</div>}>
+              <Prediction />
             </Suspense>
-          }
-        />
-      </Routes>
-    </>
+          </ProtedtedRoutes>
+        }
+      />
+      <Route
+        path="/funds"
+        element={
+          <ProtedtedRoutes>
+            <Suspense fallback={<div>Loading...</div>}>
+              <Funds />
+            </Suspense>
+          </ProtedtedRoutes>
+        }
+      />
+      <Route
+        path="/register"
+        element={
+          <Suspense fallback={<div>Loading...</div>}>
+            <Register />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/login"
+        element={
+          <Suspense fallback={<div>Loading...</div>}>
+            <Login />
+          </Suspense>
+        }
+      />
+    </Routes>
   );
 };
-export function ProtedtedRoutes(props) {
+
+export function ProtedtedRoutes({ children }) {
   if (localStorage.getItem("user")) {
-    return props.children;
+    return children;
   } else {
     return <Navigate to="/login" />;
   }

@@ -38,7 +38,7 @@ const Login = () => {
   return (
     <>
       <div className=" flex flex-col justify-center items-center h-[100vh]">
-        <div className=" bg-green-400 bg-opacity-20 border-2 border-green-400  rounded-lg w-11/12 min-h-[20rem]">
+        <div className=" bg-green-400 bg-opacity-20 border-2 border-green-400  rounded-lg w-[20rem] min-h-[20rem] md:w-[22rem]">
           {loading && <Spinner />}
           <h1 className="text-center  text-3xl text-green-400 m-10">Login</h1>
           <form

@@ -38,7 +38,7 @@ const Register = () => {
   return (
     <>
       <div className=" flex flex-col justify-center items-center h-[100vh]">
-        <div className="   border-2 border-green-400  rounded-lg w-11/12 min-h-[20rem]">
+        <div className="   border-2 border-green-400  rounded-lg min-w-[20rem] min-h-[22rem] md:min-w-[22rem]">
           {loading && <Spinner />}
           <h1 className="text-center  text-3xl text-green-400 m-10">Signup</h1>
           <form
