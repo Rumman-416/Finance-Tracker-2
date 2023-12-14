@@ -1,5 +1,3 @@
-// Home.jsx
-
 import React, { useState, useEffect, Suspense } from "react";
 import Layout from "../components/layout/Layout";
 import Spinner from "../components/Spinner";
@@ -8,6 +6,8 @@ import Modal from "antd/lib/modal";
 import Form from "antd/lib/form";
 import Input from "antd/lib/input";
 import Select from "antd/lib/select";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Analytics = React.lazy(() => import("../components/Analytics"));
 
@@ -29,7 +29,16 @@ const AddTransaction = () => {
       );
       setLoading(false);
       setShowModal(false);
-      console.log(response.data);
+      toast.success(" Transaction Added Successfully 👍 ", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
       getAllTransactions();
     } catch (error) {
       setLoading(false);
@@ -173,6 +182,7 @@ const AddTransaction = () => {
           </Form>
         </Modal>
       </div>
+      <ToastContainer />
     </Layout>
   );
 };

@@ -17,8 +17,8 @@ const Login = () => {
         email,
         password,
       });
+
       setLoading(false);
-      window.alert(`login successful`);
       localStorage.setItem(
         "user",
         JSON.stringify({ ...data.user, password: "" })
@@ -26,7 +26,6 @@ const Login = () => {
       navigate("/add-data");
     } catch (error) {
       setLoading(false);
-      window.alert(`Failed to login`);
     }
   };
   //prevent for login user

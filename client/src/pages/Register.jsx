@@ -19,12 +19,11 @@ const Register = () => {
         email,
         password,
       });
-      window.alert(`Successfully registered`);
+
       setLoading(false);
       navigate("/login");
     } catch (error) {
       setLoading(false);
-      window.alert(`Failed to register`);
     }
   };
 
