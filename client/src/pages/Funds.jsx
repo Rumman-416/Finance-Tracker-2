@@ -22,11 +22,25 @@ const Funds = () => {
       period: 36,
     },
     {
+      name: "Tree investment",
+      type: "mid",
+      payment: 4500,
+      interest: "6%",
+      period: 12,
+    },
+    {
       name: "Insurance",
       type: "high",
       payment: 5000,
       interest: "4%",
       period: 12,
+    },
+    {
+      name: "High Lvl Insurance",
+      type: "high",
+      payment: 7000,
+      interest: "6%",
+      period: 18,
     },
     {
       name: "Oldage retuns",
@@ -41,6 +55,34 @@ const Funds = () => {
       payment: 7500,
       interest: "5%",
       period: 18,
+    },
+    {
+      name: "Bajaj return plans",
+      type: "low",
+      payment: 1500,
+      interest: "3%",
+      period: 24,
+    },
+    {
+      name: "Tim return plans",
+      type: "low",
+      payment: 1250,
+      interest: "4%",
+      period: 12,
+    },
+    {
+      name: "Sham and sons insurance",
+      type: "mid",
+      payment: 4500,
+      interest: "9%",
+      period: 32,
+    },
+    {
+      name: "Tata insurance",
+      type: "high",
+      payment: 7500,
+      interest: "7%",
+      period: 24,
     },
   ];
 
@@ -137,7 +179,9 @@ const Funds = () => {
                   <h1>{fund.period} months</h1>
                 </div>
                 <div className="flex gap-2">
-                  <h1 className=" text-green-400">Amount to be invested :</h1>
+                  <h1 className=" text-green-400">
+                    Amount to be invested per month:
+                  </h1>
                   <h1>{fund.payment} </h1>
                 </div>
               </div>
