@@ -13,7 +13,7 @@ const Start = () => {
 
   return (
     <>
-      <div className="lg:min-h-[52.5rem]">
+      <div className="lg:min-h-[53rem]">
         <div className=" w-full flex justify-center items-center ">
           <h1 className="text-4xl font-heading m-10 font-bold">MoneyMinder</h1>
         </div>

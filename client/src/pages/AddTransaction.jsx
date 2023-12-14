@@ -62,6 +62,16 @@ const AddTransaction = () => {
   };
 
   useEffect(() => {
+    toast.info("👀 Click on the top left arrow button to explore more!", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
     getAllTransactions();
   }, []);
 

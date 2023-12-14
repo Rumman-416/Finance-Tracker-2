@@ -15,7 +15,6 @@ const ShowData = () => {
   const [frequency, setFrequency] = useState("7");
   const [selectedDate, setSelectedDate] = useState([]);
   const [type, setType] = useState("all");
-  const [showModal, setShowModal] = useState(false);
 
   const getAllTransactions = async () => {
     try {
