@@ -115,49 +115,57 @@ const Funds = () => {
           </span>
         </div>
       </div>
-      {totalIncomeTransactions < 10000
-        ? funds.map((fund, index) => (
-            <div
-              key={index}
-              className=" p-2  m-7 border-2 border-gray-500 rounded-lg flex flex-col gap-2"
-            >
-              <div className="flex gap-2">
-                <h1 className=" text-green-400">Investment :</h1>
-                <h1>{fund.name}</h1>
+      <div className=" w-full flex justify-center items-center my-5">
+        <h1 className=" text-xl text-green-400">
+          Investments that you may find Interesting
+        </h1>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        {totalIncomeTransactions < 10000
+          ? funds.map((fund, index) => (
+              <div
+                key={index}
+                className=" p-2 m-7 border-2 border-gray-500 rounded-lg flex flex-col gap-2"
+              >
+                <div className="flex gap-2">
+                  <h1 className=" text-green-400">Investment :</h1>
+                  <h1>{fund.name}</h1>
+                </div>
+                <div className="flex gap-2">
+                  <h1 className=" text-green-400">Period of Investment :</h1>
+                  <h1>{fund.period} months</h1>
+                </div>
+                <div className="flex gap-2">
+                  <h1 className=" text-green-400">Amount to be invested :</h1>
+                  <h1>{fund.payment} </h1>
+                </div>
               </div>
-              <div className="flex gap-2">
-                <h1 className=" text-green-400">Period of Investment :</h1>
-                <h1>{fund.period} months</h1>
+            ))
+          : userFunds.map((fund, index) => (
+              <div
+                key={index}
+                className=" p-2 m-7 border-2  border-gray-500 rounded-lg flex flex-col gap-2"
+              >
+                <div className="flex gap-2">
+                  <h1 className=" text-green-400">Investment :</h1>
+                  <h1>{fund.name}</h1>
+                </div>
+                <div className="flex gap-2">
+                  <h1 className=" text-green-400">Period of Investment :</h1>
+                  <h1>{fund.period} months</h1>
+                </div>
+                <div className="flex gap-2">
+                  <h1 className=" text-green-400">Amount to be invested :</h1>
+                  <h1>{fund.payment} </h1>
+                </div>
+                <div className="flex gap-2">
+                  <h1 className=" text-green-400">Total Interest :</h1>
+                  <h1>{fund.totalInterest}</h1>
+                </div>
               </div>
-              <div className="flex gap-2">
-                <h1 className=" text-green-400">Amount to be invested :</h1>
-                <h1>{fund.payment} </h1>
-              </div>
-            </div>
-          ))
-        : userFunds.map((fund, index) => (
-            <div
-              key={index}
-              className=" p-2  m-7 border-2  border-gray-500 rounded-lg flex flex-col gap-2"
-            >
-              <div className="flex gap-2">
-                <h1 className=" text-green-400">Investment :</h1>
-                <h1>{fund.name}</h1>
-              </div>
-              <div className="flex gap-2">
-                <h1 className=" text-green-400">Period of Investment :</h1>
-                <h1>{fund.period} months</h1>
-              </div>
-              <div className="flex gap-2">
-                <h1 className=" text-green-400">Amount to be invested :</h1>
-                <h1>{fund.payment} </h1>
-              </div>
-              <div className="flex gap-2">
-                <h1 className=" text-green-400">Total Interest :</h1>
-                <h1>{fund.totalInterest}</h1>
-              </div>
-            </div>
-          ))}
+            ))}
+      </div>
     </Layout>
   );
 };

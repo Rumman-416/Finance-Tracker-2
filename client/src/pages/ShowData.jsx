@@ -61,7 +61,7 @@ const ShowData = () => {
   return (
     <>
       <Layout>
-        <div className="flex gap-5 m-5">
+        <div className="flex gap-5 m-5 lg:ml-40">
           <div>
             <h6>Select frequency</h6>
             <Select
@@ -103,10 +103,10 @@ const ShowData = () => {
           </div>
         </div>
         <div className="flex justify-center ">
-          <div className="grid grid-cols-1">
+          <div className="grid grid-cols-1 lg:grid-cols-3">
             {allTransaction.map((transaction, index) => (
               <div
-                className=" my-5 bg-green-400 p-5 w-full rounded-md bg-opacity-60 flex"
+                className=" my-5 bg-green-400 p-5 minw-[20rem] rounded-md bg-opacity-60 flex lg:mx-16"
                 key={index}
               >
                 <div>

@@ -79,7 +79,7 @@ const LinearRegression = ({ data, selectedCategory }) => {
     roundedPrediction !== null && aggregatedExpenseData.length > 0
       ? [
           {
-            regressionLine: roundedPrediction,
+            PredictedPoint: roundedPrediction,
           },
         ]
       : [];
@@ -146,7 +146,7 @@ const LinearRegression = ({ data, selectedCategory }) => {
           <Line type="monotone" dataKey="totalExpense" stroke="#FF0000" />
           <Line
             type="monotone"
-            dataKey="regressionLine"
+            dataKey="PredictedPoint"
             stroke="#ADD8E6"
             strokeWidth={8}
             strokeDasharray="3 3"

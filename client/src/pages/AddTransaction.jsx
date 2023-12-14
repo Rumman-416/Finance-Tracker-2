@@ -66,9 +66,9 @@ const AddTransaction = () => {
         <div className="flex justify-center items-center ">
           <button
             onClick={() => setShowModal(true)}
-            className=" bg-green-400 w-20 h-10 rounded-md hover:bg-opacity-30 m-5"
+            className=" bg-green-400 w-56 h-10 rounded-md hover:bg-opacity-30 m-5"
           >
-            Add New
+            Add New Transaction
           </button>
         </div>
         <Modal

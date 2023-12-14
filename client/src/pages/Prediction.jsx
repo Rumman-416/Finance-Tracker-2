@@ -35,22 +35,24 @@ const Prediction = () => {
 
   return (
     <Layout>
-      <div className="mt-10">
-        <h2>Linear Regression Predictions</h2>
+      <div className="mt-10 w-full flex flex-col justify-center items-center gap-5">
+        <h2 className=" text-green-400">Next Expense prediction</h2>
         {uniqueCategories.length > 0 && (
           <>
-            <label>Select Category: </label>
-            <select
-              value={selectedCategory}
-              onChange={(e) => setSelectedCategory(e.target.value)}
-              className="w-36 h-7 bg-[#23253a] border border-green-400 rounded-md"
-            >
-              {uniqueCategories.map((category) => (
-                <option key={category} value={category}>
-                  {category}
-                </option>
-              ))}
-            </select>
+            <div>
+              <label>Select Category: </label>
+              <select
+                value={selectedCategory}
+                onChange={(e) => setSelectedCategory(e.target.value)}
+                className="w-36 h-7 bg-[#23253a] border border-green-400 rounded-md"
+              >
+                {uniqueCategories.map((category) => (
+                  <option key={category} value={category}>
+                    {category}
+                  </option>
+                ))}
+              </select>
+            </div>
           </>
         )}
         <Suspense fallback={<div>Loading...</div>}>

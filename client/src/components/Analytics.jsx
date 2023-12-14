@@ -77,21 +77,25 @@ const Analytics = ({ allTransaction }) => {
 
   return (
     <div className="flex flex-col items-center">
-      <div className=" bg-green-400 bg-opacity-20 m-5 p-5 rounded-xl border-2 border-green-400">
-        <div className=" text-green-400">
-          Total Transactions :{" "}
-          <span className=" text-white">{totalTransactions}</span>
-        </div>
-        <div className=" text-green-400">
-          Number of Income :{" "}
-          <span className=" text-white">{totalIncomeTransactions.length}</span>
-        </div>
-        <div className=" text-green-400">
-          Number of Expense :
-          <span className=" text-white">
-            {" "}
-            {totalExpenseTransactions.length}
-          </span>
+      <div className=" bg-green-400 bg-opacity-20 m-5 p-5 rounded-xl border-2 border-green-400 flex flex-col lg:flex-row justify-center lg:items-center lg:gap-10">
+        <div className="">
+          <div className=" text-green-400">
+            Total Transactions :{" "}
+            <span className=" text-white">{totalTransactions}</span>
+          </div>
+          <div className=" text-green-400">
+            Number of Income :{" "}
+            <span className=" text-white">
+              {totalIncomeTransactions.length}
+            </span>
+          </div>
+          <div className=" text-green-400">
+            Number of Expense :
+            <span className=" text-white">
+              {" "}
+              {totalExpenseTransactions.length}
+            </span>
+          </div>
         </div>
         <div className="flex items-center">
           <div className="">
@@ -132,16 +136,20 @@ const Analytics = ({ allTransaction }) => {
           )}
         </div>
       </div>
-      <div className=" bg-green-400 bg-opacity-20 m-5 p-5 rounded-xl border-2 border-green-400">
-        <div className=" text-green-400">
-          Total Turnover : <span className=" text-white"> {totalTurnover}</span>
-        </div>
-        <div className=" text-green-400">
-          Net Income :<span className=" text-white">{totalIncomeTurnover}</span>{" "}
-        </div>
-        <div className=" text-green-400">
-          Net Expense :
-          <span className=" text-white">{totalExpenseTurnover}</span>{" "}
+      <div className=" bg-green-400 bg-opacity-20 m-5 p-5 rounded-xl border-2 border-green-400 flex flex-col lg:flex-row justify-center lg:items-center lg:gap-10">
+        <div>
+          <div className=" text-green-400">
+            Total Turnover :{" "}
+            <span className=" text-white"> {totalTurnover}</span>
+          </div>
+          <div className=" text-green-400">
+            Net Income :
+            <span className=" text-white">{totalIncomeTurnover}</span>{" "}
+          </div>
+          <div className=" text-green-400">
+            Net Expense :
+            <span className=" text-white">{totalExpenseTurnover}</span>{" "}
+          </div>
         </div>
         <div className="flex items-center">
           <div className="">
@@ -154,6 +162,7 @@ const Analytics = ({ allTransaction }) => {
               <h1>: Expense</h1>
             </div>
           </div>
+
           {totalIncomeTurnoverPercent !== 0 ||
           totalExpenseTurnoverPercent !== 0 ? (
             <ResponsiveContainer width={200} height={200}>
