@@ -108,22 +108,37 @@ const Funds = () => {
 
   return (
     <Layout>
-      <div>Total Income Transactions: ${totalIncomeTransactions}</div>
-
+      <div className="flex justify-center">
+        <div className=" bg-green-400 w-full text-[#23253a] text-2xl bg-opacity-80">
+          <span className=" ml-10">
+            Net Income: Rs{totalIncomeTransactions}
+          </span>
+        </div>
+      </div>
       {totalIncomeTransactions < 10000
         ? funds.map((fund, index) => (
             <div
               key={index}
-              className=" m-5 border-2 border-green-400 rounded-lg"
+              className=" p-2  m-7 border-2 border-gray-500 rounded-lg flex flex-col gap-2"
             >
-              {fund.name} - Payment: ${fund.payment} - Period: {fund.period}{" "}
-              months
+              <div className="flex gap-2">
+                <h1 className=" text-green-400">Investment :</h1>
+                <h1>{fund.name}</h1>
+              </div>
+              <div className="flex gap-2">
+                <h1 className=" text-green-400">Period of Investment :</h1>
+                <h1>{fund.period} months</h1>
+              </div>
+              <div className="flex gap-2">
+                <h1 className=" text-green-400">Amount to be invested :</h1>
+                <h1>{fund.payment} </h1>
+              </div>
             </div>
           ))
         : userFunds.map((fund, index) => (
             <div
               key={index}
-              className=" p-2  m-7 border-2 border-[#ff4b56] rounded-lg flex flex-col gap-2"
+              className=" p-2  m-7 border-2  border-gray-500 rounded-lg flex flex-col gap-2"
             >
               <div className="flex gap-2">
                 <h1 className=" text-green-400">Investment :</h1>

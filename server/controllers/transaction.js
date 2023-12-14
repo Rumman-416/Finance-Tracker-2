@@ -44,20 +44,6 @@ const addTransaction = async (req, res) => {
   }
 };
 
-const updateTransaction = async (req, res) => {
-  try {
-    const updatedTransaction = await transactionModel.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true }
-    );
-    res.status(200).json(updatedTransaction);
-  } catch (error) {
-    console.log(error);
-    res.status(500).json(error);
-  }
-};
-
 const deleteTransaction = async (req, res) => {
   try {
     await transactionModel.findByIdAndDelete(req.params.id);
@@ -72,6 +58,5 @@ module.exports = {
   getTransaction,
   getAllTransaction,
   addTransaction,
-  updateTransaction,
   deleteTransaction,
 };

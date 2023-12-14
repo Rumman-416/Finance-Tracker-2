@@ -62,57 +62,60 @@ const AddTransaction = () => {
       <Suspense fallback={<p> Loading</p>}>
         <Analytics allTransaction={allTransaction} />
       </Suspense>
-      <div className="flex justify-center items-center ">
-        <button
-          onClick={() => setShowModal(true)}
-          className=" bg-green-400 w-20 h-10 rounded-md hover:bg-opacity-30"
+      <div>
+        <div className="flex justify-center items-center ">
+          <button
+            onClick={() => setShowModal(true)}
+            className=" bg-green-400 w-20 h-10 rounded-md hover:bg-opacity-30 m-5"
+          >
+            Add New
+          </button>
+        </div>
+        <Modal
+          title="Add Transaction"
+          open={showModal}
+          onCancel={() => setShowModal(false)}
+          footer={false}
         >
-          Add New
-        </button>
+          <Form layout="vertical" onFinish={handleSubmit}>
+            <Form.Item label="Name" name="name">
+              <Input type="text" />
+            </Form.Item>
+            <Form.Item label="Amount" name="amount">
+              <Input type="number" />
+            </Form.Item>
+            <Form.Item label="Type" name="type">
+              <Select>
+                <Select.Option value="income">Income</Select.Option>
+                <Select.Option value="expense">Expense</Select.Option>
+              </Select>
+            </Form.Item>
+            <Form.Item label="Category" name="category">
+              <Select>
+                <Select.Option value="salary">Salary</Select.Option>
+                <Select.Option value="entertainment">
+                  Entertainment
+                </Select.Option>
+                <Select.Option value="food">Food</Select.Option>
+                <Select.Option value="tax">Tax</Select.Option>
+                <Select.Option value="bill">Bills</Select.Option>
+                <Select.Option value="others">Others</Select.Option>
+              </Select>
+            </Form.Item>
+            <Form.Item label="Date" name="date">
+              <Input type="date" />
+            </Form.Item>
+            <Form.Item label="Description" name="description">
+              <Input type="text" />
+            </Form.Item>
+            <div className="flex justify-end items-center">
+              <button type="submit" className="border-2 h-8 w-16">
+                Save
+              </button>
+            </div>
+          </Form>
+        </Modal>
       </div>
-      <Modal
-        title="Add Transaction"
-        open={showModal}
-        onCancel={() => setShowModal(false)}
-        footer={false}
-      >
-        <Form layout="vertical" onFinish={handleSubmit}>
-          <Form.Item label="Name" name="name">
-            <Input type="text" />
-          </Form.Item>
-          <Form.Item label="Amount" name="amount">
-            <Input type="number" />
-          </Form.Item>
-          <Form.Item label="Type" name="type">
-            <Select>
-              <Select.Option value="income">Income</Select.Option>
-              <Select.Option value="expense">Expense</Select.Option>
-            </Select>
-          </Form.Item>
-          <Form.Item label="Category" name="category">
-            <Select>
-              <Select.Option value="salary">Salary</Select.Option>
-              <Select.Option value="Entertainment">Entertainment</Select.Option>
-              <Select.Option value="food">Food</Select.Option>
-              <Select.Option value="tax">Tax</Select.Option>
-              <Select.Option value="bill">Bills</Select.Option>
-              <Select.Option value="others">Others</Select.Option>
-            </Select>
-          </Form.Item>
-          <Form.Item label="Date" name="date">
-            <Input type="date" />
-          </Form.Item>
-          <Form.Item label="Description" name="description">
-            <Input type="text" />
-          </Form.Item>
-          <div className="flex justify-end items-center">
-            <button type="submit" className="border-2 h-8 w-16">
-              Save
-            </button>
-          </div>
-        </Form>
-      </Modal>
-      <button onClick={() => navigate("/show-data")}>Transactions</button>
     </Layout>
   );
 };

@@ -6,7 +6,6 @@ import axios from "axios";
 import { FaRupeeSign } from "react-icons/fa";
 import { CiCalendarDate } from "react-icons/ci";
 import { BsCashCoin } from "react-icons/bs";
-import { MdModeEditOutline } from "react-icons/md";
 import { RiDeleteBin6Line } from "react-icons/ri";
 
 const { RangePicker } = DatePicker;
@@ -16,6 +15,7 @@ const ShowData = () => {
   const [frequency, setFrequency] = useState("7");
   const [selectedDate, setSelectedDate] = useState([]);
   const [type, setType] = useState("all");
+  const [showModal, setShowModal] = useState(false);
 
   const getAllTransactions = async () => {
     try {
@@ -26,24 +26,6 @@ const ShowData = () => {
       );
       setAllTransaction(res.data);
       console.log(res.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-  const handleUpdate = async (transactionId) => {
-    try {
-      // Implement your logic to fetch the specific transaction data for editing
-      // For example:
-      const response = await axios.get(
-        `http://localhost:8080/transactions/get-transaction/${transactionId}`
-      );
-      const transactionData = response.data;
-
-      // Now you can use the transactionData to pre-fill your update form or modal
-      // ...
-
-      // After updating the transaction, refresh the transaction list
-      getAllTransactions();
     } catch (error) {
       console.error(error);
     }
@@ -155,12 +137,8 @@ const ShowData = () => {
                     <h1>{formatDateString(transaction.date)}</h1>
                   </div>
                   <div className="flex gap-5 my-3">
-                    <MdModeEditOutline
-                      className=" text-xl"
-                      onClick={() => handleUpdate(transaction._id)}
-                    />
                     <RiDeleteBin6Line
-                      className=" text-xl"
+                      className=" text-2xl text-red-500 hover:cursor-pointer"
                       onClick={() => handleDelete(transaction._id)}
                     />
                   </div>
