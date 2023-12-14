@@ -1,17 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
-
+/*import { Link } from "react-router-dom";*/
+import moneyminder from "../assets/images/moneyminder.png";
 const Start = () => {
   return (
     <div>
-      <Link
-        className=""
-        to={{
-          pathname: "/login",
-        }}
-      >
-        Login
-      </Link>
+      
+        <img src={moneyminder} className="h-20 w-20" />
+    
+      <h1>MoneyMinder</h1>
     </div>
   );
 };
